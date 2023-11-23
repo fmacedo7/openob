@@ -31,7 +31,7 @@ Modify the redis-server settings
 sudo nano /etc/redis/redis.conf
 ```
 
-**In networks find <bind 127.0.0.1 -::1> and replace it with <bind 0.0.0.0>**
+In networks find **<bind 127.0.0.1 -::1>** and replace it with **<bind 0.0.0.0>**
 
 Restart redis-server
 ```bash
