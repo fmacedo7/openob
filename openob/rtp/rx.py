@@ -111,6 +111,9 @@ class RTPReceiver(object):
         elif self.link_config.encoding == 'pcm':
             depayloader = Gst.ElementFactory.make(
                 'rtpL16depay', 'depayloader')
+        elif self.link_config.encoding == 'aptx':
+            depayloader = Gst.ElementFactory.make('rtpgstdepay', 'depayloader')
+            decoder = Gst.ElementFactory.make('avdec_aptx_hd', 'decoder')
         else:
             self.logger.critical('Unknown encoding type %s' % self.link_config.encoding)
         
@@ -199,5 +202,3 @@ class RTPReceiver(object):
                         self.pipeline.set_state(Gst.State.NULL)
                         self.main_loop.quit()
         return True
-
-
