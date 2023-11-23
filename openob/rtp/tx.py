@@ -145,6 +145,9 @@ class RTPTransmitter(object):
         elif self.link_config.encoding == 'pcm':
             # we have no encoder for PCM operation
             payloader = Gst.ElementFactory.make('rtpL16pay', 'payloader')
+        elif self.link_config.encoding == 'aptx':
+            encoder = Gst.ElementFactory.make('avenc_aptx_hd', 'encoder')
+            payloader = Gst.ElementFactory.make('rtpgstpay', 'payloader')
         else:
             self.logger.critical('Unknown encoding type %s' % self.link_config.encoding)
 
