@@ -15,16 +15,37 @@ Due to time constraints and focus elsewhere I'm simply not able to do the major 
 
 It's open source - if you'd like to take it on, fork away!
 
+# Install
 
-## Features
+Here is the OpenOB and GStreamer installation guide on Debian 12.2 using Python 3
 
-* IETF standard Opus codec - variable bandwidth and bitrate, 16-384kbps
-* Linear PCM mode for transparent audio transit over 1600kbps capable connections (LANs, fast wifi)
-* Trivial configuration and setup via command line
-* Transmitter-configured receivers for standalone receiver operation and control
-* Low latency performance (codec internal latency under 5ms PCM, under 25ms Opus) with variable jitter buffer (0-150ms)
-* System latency in low hundreds to tens of milliseconds for most applications; more over the internet/lossy links
-* Automatic link recovery in the event of failures
+** Install dependencies
+
+```sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio python3-gst-1.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 python3-setuptools redis-server -y```
+
+** Modify the redis-server settings
+
+```sudo nano /etc/redis/redis.conf```
+
+**In networks find <bind 127.0.0.1 -::1> and replace it with <bind 0.0.0.0>**
+**Restart redis-server: ```sudo service redis-server restart```**
+
+## Firewall config
+
+If you're using a firewall you should allow TCP ports 6397 and UDP ports 3000
+
+## Clone and Installing OpenOB
+
+Clone the repository into a folder
+```git clone https://github.com/jamesharrison/openob.git && cd openob```
+
+Build the source code
+```python3 setup.py build```
+
+Install the package on the system
+```sudo python3 setup.py install```
+
+**Done!**
 
 ## Licensing and Credits
 
