@@ -19,19 +19,20 @@ It's open source - if you'd like to take it on, fork away!
 
 Here is the OpenOB and GStreamer installation guide on Debian 12.2 using Python 3
 
-** Install dependencies
+>Install dependencies
 
 ```bash
 sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio python3-gst-1.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 python3-setuptools redis-server -y
 ```
 
-** Modify the redis-server settings
+>Modify the redis-server settings
 
 ```bash
 sudo nano /etc/redis/redis.conf
 ```
 
 **In networks find <bind 127.0.0.1 -::1> and replace it with <bind 0.0.0.0>**
+
 Restart redis-server
 ```bash
 sudo service redis-server restart
