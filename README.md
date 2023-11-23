@@ -27,10 +27,15 @@ sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgst
 
 ** Modify the redis-server settings
 
-```sudo nano /etc/redis/redis.conf```
+```bash
+sudo nano /etc/redis/redis.conf
+```
 
 **In networks find <bind 127.0.0.1 -::1> and replace it with <bind 0.0.0.0>**
-**Restart redis-server: ```sudo service redis-server restart```**
+Restart redis-server
+```bash
+sudo service redis-server restart
+```
 
 ## Firewall config
 
@@ -39,13 +44,19 @@ If you're using a firewall you should allow TCP ports 6397 and UDP ports 3000
 ## Clone and Installing OpenOB
 
 Clone the repository into a folder
-```git clone https://github.com/jamesharrison/openob.git && cd openob```
+```bash
+git clone https://github.com/jamesharrison/openob.git && cd openob
+```
 
 Build the source code
-```python3 setup.py build```
+```bash
+python3 setup.py build
+```
 
 Install the package on the system
-```sudo python3 setup.py install```
+```bash
+sudo python3 setup.py install
+```
 
 **Done!**
 
