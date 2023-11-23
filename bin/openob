@@ -46,7 +46,7 @@ parser_tx_jack.add_argument('-jn', '--jack_name', type=str, default='openob', he
 parser_tx_jack.add_argument('-aj', '--jack_auto', action='store_false', help="Disable auto connection for JACK inputs")
 parser_tx_jack.add_argument('-jp', '--jack_port_pattern', type=str, default=None, help="JACK port pattern")
 parser_tx.add_argument('-r', '--samplerate', type=int, default=0, help="Set the sample rate to request from the input (Hz)")
-parser_tx.add_argument('-e', '--encoding', type=str, choices=['pcm', 'opus'], default='opus', help="The audio encoding type for this link; PCM for linear audio (16-bit), or Opus for encoded audio")
+parser_tx.add_argument('-e', '--encoding', type=str, choices=['pcm', 'opus', 'aptx'], default='opus', help="The audio encoding type for this link; PCM for linear audio (16-bit), or Opus for encoded audio")
 parser_tx.add_argument('-p', '--port', type=int, default=3000, help="The base port to use for audio transport. This port must be accessible on the receiving host")
 parser_tx.add_argument('-m', '--multicast', action='store_true', dest='multicast', help="Start this transmitter in multicast mode, enabling multiple clients to connect at once using the address specified in reciever_host")
 parser_tx.add_argument('--no-multicast', action='store_false', dest='multicast', help="Start this transmitter in unicast mode (default)")
