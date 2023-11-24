@@ -37,7 +37,9 @@ sudo nano /etc/redis/redis.conf
 ```
 Find the section called networks and leave something similar to
 >bind 127.0.0.1
+
 >bind 0.0.0.0
+
 Restart redis-server to apply the settings
 ```bash
 sudo service redis-server restart
