@@ -6,60 +6,60 @@
 OpenOB (Open Outside Broadcast) is a simple Python/GStreamer based application which implements a highly configurable RTP-based audio link system.
 
 It is primarily designed for broadcast applications including (but not limited to) contribution links, emission links, talkback, and intranet audio distribution systems.
+__________________________________________________________
 
-## NOTICE
+## Fork of the OpenOB Project with aptX Codec Support
 
-**The openob project is not being actively maintained or developed. Use at your own risk.**
+This repository is a fork of the OpenOB project, a powerful solution for streaming audio over IP based on the AES67 protocol. This fork was created to include support for a new audio codec, aptX.
 
-Due to time constraints and focus elsewhere I'm simply not able to do the major refactoring required to update OpenOB for modern GStreamer/Python, let alone the tidying up and improvements that it could really use under the hood.
+## Main changes:
 
-It's open source - if you'd like to take it on, fork away!
+### Implementation of the aptX codec
+The highlight of this release is the addition of support for the aptX codec. aptX is known for delivering exceptional audio quality, especially in environments with limited bandwidth. Its inclusion expands the options available for high-fidelity audio transmission in OpenOB.
 
-# Install
+### Compatibility with the Original Project
+This fork remains compatible with the original OpenOB project, maintaining all existing functionality for audio transmission over IP with the AES67 protocol. All aptX-specific improvements and modifications have been integrated without compromising the integrity of the main project.
 
-Here is the OpenOB and GStreamer installation guide on Debian 12.2 using Python 3
+## How to use
 
-Install dependencies
-
+1. **Clone the Repository**
 ```bash
-sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio python3-gst-1.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 python3-setuptools redis-server -y
+https://github.com/fmacedo7/openob.git
 ```
-
-Modify the redis-server settings
-
+2. **Update and install the dependencies***
+```bash
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1. 0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio python3-gst-1.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 python3-setuptools redis-server -y
+```
+3. **Modify the redis-server settings**
+You need to allow redis to access external machines by modifying its network settings in redis.conf
 ```bash
 sudo nano /etc/redis/redis.conf
 ```
-
-In networks find **<bind 127.0.0.1 -::1>** and replace it with **<bind 0.0.0.0>**
-
-Restart redis-server
+Find the section called networks and leave something similar to
+>bind 127.0.0.1
+>bind 0.0.0.0
+Restart redis-server to apply the settings
 ```bash
 sudo service redis-server restart
 ```
+4. **Firewall**
+You need to make sure that ***TCP port 6397*** and ***UDP port 3000*** are allowed.
 
-## Firewall config
-
-If you're using a firewall you should allow TCP ports 6397 and UDP ports 3000
-
-## Clone and Installing OpenOB
-
-Clone the repository into a folder
-```bash
-git clone https://github.com/jamesharrison/openob.git && cd openob
-```
-
+5. **Building and installing OpenOB**
 Build the source code
 ```bash
 python3 setup.py build
 ```
-
-Install the package on the system
+6. **Install the packages on the system**
 ```bash
 sudo python3 setup.py install
 ```
-
-**Done!**
+7. **Check the installation**
+```bash
+openob --help
+```
+## Acknowledgments
+We are grateful to the OpenOB community for providing a solid foundation and to the original team for developing and maintaining this project. This fork seeks to expand OpenOB's capabilities, bringing innovation through the implementation of the aptX codec.
 
 ## Licensing and Credits
 
