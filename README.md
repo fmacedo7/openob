@@ -10,7 +10,7 @@ __________________________________________________________
 
 ## Fork of the OpenOB Project with aptX Codec Support
 
-This repository is a fork of the OpenOB project, a powerful solution for streaming audio over IP based on the AES67 protocol. This fork was created to include support for a new audio codec, aptX.
+This repository is a fork of the [OpenOB project](https://github.com/JamesHarrison/openob), a powerful solution for streaming audio over IP based on the AES67 protocol. This fork was created to include support for a new audio codec, aptX.
 
 ## Main changes:
 
